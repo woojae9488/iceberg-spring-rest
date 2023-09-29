@@ -1,2 +1,2 @@
-# spring-iceberg-rest
+# iceberg-spring-rest
 Iceberg REST Catalog with Spring Boot
