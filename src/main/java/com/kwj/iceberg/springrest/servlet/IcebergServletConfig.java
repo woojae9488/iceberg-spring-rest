@@ -9,10 +9,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.iceberg.CatalogProperties;
 import org.apache.iceberg.catalog.Catalog;
 import org.apache.iceberg.jdbc.JdbcCatalog;
-import org.apache.iceberg.rest.RESTCatalogAdapter;
-import org.apache.iceberg.rest.RESTCatalogServlet;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 
 import com.google.common.collect.ImmutableMap;
@@ -37,8 +34,8 @@ public class IcebergServletConfig {
 	}
 
 	@Bean
-	public ServletRegistrationBean<RESTCatalogServlet> restCatalogServlet(Catalog catalog) {
-		return new ServletRegistrationBean<>(new RESTCatalogServlet(new RESTCatalogAdapter(catalog)), "/");
+	public IcebergRESTCatalogServletRegistration icebergRESTCatalogServlet(Catalog catalog) {
+		return new IcebergRESTCatalogServletRegistration(catalog, "memory");
 	}
 
 }
