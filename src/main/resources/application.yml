@@ -2,3 +2,7 @@ spring:
   mvc:
     servlet:
       path: /mgmt
+
+springdoc:
+  swagger-ui:
+    url: https://raw.githubusercontent.com/apache/iceberg/master/open-api/rest-catalog-open-api.yaml

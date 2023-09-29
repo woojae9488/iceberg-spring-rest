@@ -1,5 +1,7 @@
 package com.kwj.iceberg.springrest.servlet;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Map;
 import java.util.UUID;
 
@@ -14,16 +16,15 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.io.Files;
 
 @org.springframework.context.annotation.Configuration
 public class IcebergServletConfig {
 
 	@Bean
 	@ConditionalOnMissingBean(Catalog.class)
-	public Catalog memoryCatalog() {
+	public Catalog memoryCatalog() throws IOException {
 		Map<String, String> catalogProperties = ImmutableMap.of(
-			CatalogProperties.WAREHOUSE_LOCATION, Files.createTempDir().getAbsolutePath(),
+			CatalogProperties.WAREHOUSE_LOCATION, Files.createTempDirectory("iceberg-").toString(),
 			CatalogProperties.URI, "jdbc:sqlite:file::memory:?ic" + UUID.randomUUID().toString().replace("-", ""),
 			JdbcCatalog.PROPERTY_PREFIX + "username", "user",
 			JdbcCatalog.PROPERTY_PREFIX + "password", "password"
