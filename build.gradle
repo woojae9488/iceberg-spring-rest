@@ -33,11 +33,10 @@ repositories {
 
 dependencies {
     implementation "org.springframework.boot:spring-boot-starter-web"
-    implementation "org.apache.hadoop:hadoop-common:$hadoop_common_version"
+    implementation "org.apache.iceberg:iceberg-bundled-guava:$iceberg_core_version"
     implementation "org.apache.iceberg:iceberg-core:$iceberg_core_version"
     implementation "org.apache.iceberg:iceberg-core:$iceberg_core_version:tests"
     implementation "org.springdoc:springdoc-openapi-ui:$springdoc_opanapi_version"
-    implementation "org.xerial:sqlite-jdbc:$sqlite_jdbc_version"
 
     compileOnly "org.projectlombok:lombok"
     annotationProcessor "org.projectlombok:lombok"

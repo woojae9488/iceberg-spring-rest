@@ -1,6 +1,6 @@
 package com.kwj.iceberg.springrest.api;
 
-public class IcebergRESTPaths {
+public class IcebergUriPaths {
 
 	public static final String CATALOG_V1_PREFIX = "/{catalog}/v1";
 
