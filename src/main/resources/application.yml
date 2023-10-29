@@ -1,8 +1,14 @@
-spring:
-  mvc:
-    servlet:
-      path: /mgmt
-
 springdoc:
   swagger-ui:
     url: https://raw.githubusercontent.com/apache/iceberg/apache-iceberg-1.3.1/open-api/rest-catalog-open-api.yaml
+
+iceberg:
+  catalogs:
+    backend:
+      catalog-class: org.apache.iceberg.jdbc.JdbcCatalog
+      implicit: true
+      properties:
+        warehouse: /Users/user/Downloads
+        uri: jdbc:sqlite:file::memory?icabc
+        jdbc.username: user
+        jdbc.password: password
