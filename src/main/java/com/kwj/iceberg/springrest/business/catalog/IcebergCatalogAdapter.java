@@ -18,8 +18,6 @@ import org.apache.iceberg.rest.responses.ListTablesResponse;
 import org.apache.iceberg.rest.responses.LoadTableResponse;
 import org.apache.iceberg.rest.responses.UpdateNamespacePropertiesResponse;
 
-import com.kwj.iceberg.springrest.business.catalog.model.IcebergCatalogContext;
-
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor(staticName = "of")
@@ -37,28 +35,28 @@ public class IcebergCatalogAdapter implements IcebergCatalogHandler {
 
 	@Override
 	public ListNamespacesResponse listNamespaces(Namespace parent) {
-		return CatalogHandlers.listNamespaces(catalogContext.getCatalog(), parent);
+		return CatalogHandlers.listNamespaces(catalogContext.getNamespaceCatalog(), parent);
 	}
 
 	@Override
 	public CreateNamespaceResponse createNamespace(CreateNamespaceRequest request) {
-		return CatalogHandlers.createNamespace(catalogContext.getCatalog(), request);
+		return CatalogHandlers.createNamespace(catalogContext.getNamespaceCatalog(), request);
 	}
 
 	@Override
 	public GetNamespaceResponse loadNamespace(Namespace namespace) {
-		return CatalogHandlers.loadNamespace(catalogContext.getCatalog(), namespace);
+		return CatalogHandlers.loadNamespace(catalogContext.getNamespaceCatalog(), namespace);
 	}
 
 	@Override
 	public void dropNamespace(Namespace namespace) {
-		CatalogHandlers.dropNamespace(catalogContext.getCatalog(), namespace);
+		CatalogHandlers.dropNamespace(catalogContext.getNamespaceCatalog(), namespace);
 	}
 
 	@Override
 	public UpdateNamespacePropertiesResponse updateNamespaceProperties(
 		Namespace namespace, UpdateNamespacePropertiesRequest request) {
-		return CatalogHandlers.updateNamespaceProperties(catalogContext.getCatalog(), namespace, request);
+		return CatalogHandlers.updateNamespaceProperties(catalogContext.getNamespaceCatalog(), namespace, request);
 	}
 
 	@Override

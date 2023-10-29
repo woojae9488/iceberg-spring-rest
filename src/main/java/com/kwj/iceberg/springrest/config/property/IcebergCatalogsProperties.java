@@ -2,8 +2,7 @@ package com.kwj.iceberg.springrest.config.property;
 
 import java.util.Map;
 
-import org.apache.iceberg.catalog.Catalog;
-import org.apache.iceberg.catalog.SupportsNamespaces;
+import org.springframework.lang.NonNull;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -14,19 +13,7 @@ import lombok.ToString;
 @ToString
 public class IcebergCatalogsProperties {
 
+	@NonNull
 	private Map<String, IcebergCatalogProperties<?>> catalogs;
-
-	@Getter
-	@Setter
-	@ToString
-	public static class IcebergCatalogProperties<T extends Catalog & SupportsNamespaces> {
-
-		private Class<T> catalogClass;
-
-		private boolean implicit;
-
-		private Map<String, String> properties;
-
-	}
 
 }
